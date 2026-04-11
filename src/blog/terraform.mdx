@@ -1,0 +1,163 @@
+export const meta = {
+  title: "Terraform: Write Your Infrastructure Like Code",
+  date: "2026-01-02",
+  author: "Sanket More",
+  tags: ["terraform", "devops", "iac", "cloud"],
+  excerpt: "Stop clicking around cloud consoles. Terraform lets you define your entire infrastructure in code, version it, and deploy it repeatably.",
+  readingTime: "6 min read",
+  color: "violet",
+}
+
+
+I used to manage cloud infrastructure the way most people do when they start out: logging into the AWS console, clicking around, spinning up EC2 instances, forgetting what settings I used, and then panicking when something broke and I had to recreate it from memory.
+
+Then I found Terraform, and I haven't touched a cloud console for anything serious since.
+
+---
+
+![Terraform overview](https://res.cloudinary.com/dh9bwsdjp/image/upload/v1772005002/terraform-banner_i7apa7.png)
+
+## What Terraform Is
+
+Terraform is an **Infrastructure as Code** (IaC) tool made by HashiCorp. You write config files describing what infrastructure you want like servers, databases, DNS records, load balancers, VPCs and Terraform figures out how to create it.
+
+It's *not* a scripting tool. You don't tell it *how* to do things step by step. You declare the end state you want, and Terraform works out what needs to be created, changed, or destroyed to get there. That distinction matters a lot in practice.
+
+It supports pretty much every cloud provider like AWS, GCP, Azure, DigitalOcean, Cloudflare. One tool for everything.
+
+---
+
+## Your First Terraform Config
+
+Terraform configs are written in **HCL** (HashiCorp Configuration Language). It reads like a cleaner version of JSON with some logic merged in.
+
+Here's a minimal example, an AWS S3 bucket:
+
+```hcl
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "my-app-assets-2025"
+}
+```
+
+Three commands and you're live:
+
+```bash
+terraform init      # download providers
+terraform plan      # preview what will change
+terraform apply     # make it happen
+```
+
+`terraform plan` is the part I love most. Before touching anything, it prints exactly what it's going to create, modify, or destroy. No surprises.
+
+---
+
+## State: The Thing You Need to Understand
+
+Terraform keeps a **state file** (`terraform.tfstate`) that tracks what it has actually created in the real world. This is how it knows what needs to change next time you run it.
+
+By default this file lives locally which is fine for solo projects, dangerous for teams. For anything shared, store state remotely:
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket = "my-terraform-state"
+    key    = "prod/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+```
+
+Remote state means your whole team is working from the same source of truth, and Terraform can lock the state while someone's applying changes so two people don't step on each other.
+
+---
+
+## Variables and Outputs
+
+Hardcoding values gets old fast. Variables let you reuse configs across environments:
+
+```hcl
+variable "environment" {
+  default = "staging"
+}
+
+variable "instance_type" {
+  default = "t3.micro"
+}
+
+resource "aws_instance" "app" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = var.instance_type
+
+  tags = {
+    Name = "app-${var.environment}"
+  }
+}
+
+output "instance_ip" {
+  value = aws_instance.app.public_ip
+}
+```
+
+Run `terraform apply -var="environment=prod"` to override defaults. Outputs print useful values after apply like IPs, ARNs, connection strings that you can pipe into other tools or scripts.
+
+---
+
+## Modules: Don't Repeat Yourself
+
+Once you've written good Terraform configs, you'll want to reuse them. Modules are Terraform's way of packaging a set of resources into a reusable component.
+
+```hcl
+module "vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "5.0.0"
+
+  name = "my-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["us-east-1a", "us-east-1b"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24"]
+}
+```
+
+The [Terraform Registry](https://registry.terraform.io) has thousands of community modules for common patterns like VPCs, EKS clusters, RDS databases.
+
+---
+
+## The Workflow in Practice
+
+Day to day, Terraform fits neatly into how teams already work. You write or change a `.tf` file, open a pull request, and your CI pipeline runs `terraform plan` and posts the output as a comment. Reviewers see exactly what infrastructure will change before merging. After merge, `terraform apply` runs automatically.
+
+It's the same review process you use for application code, applied to infrastructure. Once you work this way, going back to clicking around a console feels genuinely uncomfortable.
+
+> 💡 **Tip:** Always commit your `.tf` files and your `.terraform.lock.hcl` file. Never commit `terraform.tfstate` because that can contain secrets. Add it to `.gitignore` if you're using local state.
+
+---
+
+## Worth Knowing
+
+A few things that catch people out early on:
+
+`terraform destroy` tears down everything Terraform manages. It's useful for ephemeral environments but terrifying if you run it in the wrong directory. Always double check.
+
+Terraform isn't great at handling resources that change outside of it, if someone manually edits something in the console, Terraform's state drifts from reality. `terraform refresh` can help, but the real fix is discipline: if Terraform owns it, only Terraform touches it.
+
+---
+
+Terraform clicked for me when I stopped thinking of it as a deployment tool and started thinking of it as version control for my infrastructure. The moment you can `git clone` a repo and have a complete, working environment running in minutes, that's when it stops being a tool and starts being a superpower.
+
+
+

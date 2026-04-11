@@ -1,0 +1,148 @@
+export const meta = {
+title: "Docker Demystified: Containerize Everything",
+date: "2025-12-20",
+tags: ["cicd", "aws", "docker"],
+author: "Sanket More",
+excerpt: "Simple intro to Docker — why containers exist and how to start using them fast.",
+readingTime: "5 min read",
+color: "blue",
+}
+
+
+If you ever deployed something and heard *"works on my machine"*, then you already know why Docker exists.
+
+Docker lets you package your app with all dependencies into something called a **container**. That container runs the same on local, server, or cloud. No setup drama, no version mismatch.
+
+---
+
+## Why Containers?
+
+Before Docker, we used virtual machines. They were heavy and slow.
+
+* VM → Full OS, more RAM, slower boot
+* Container → Lightweight, shares host kernel, starts fast
+
+Containers basically remove the classic dev vs production headache.
+
+---
+
+## Core Concepts (Simple Version)
+
+![Docker Architecture](https://res.cloudinary.com/dh9bwsdjp/image/upload/v1772005002/docker-architecture_edw44k.webp)
+
+**Image** → Blueprint of your app
+**Container** → Running instance of that image
+**Registry** → Place where images live (Docker Hub, ECR, GHCR)
+
+That’s honestly 80% of Docker understanding.
+
+---
+
+## Install Docker
+
+Download Docker Desktop and verify:
+
+```bash
+docker --version
+```
+---
+
+## Run Your First Container
+
+```bash
+docker run -d -p 8080:80 --name my-nginx nginx
+```
+
+What happens here:
+
+* Runs nginx container
+* Maps port 8080 → 80
+* Starts in background
+
+Open `localhost:8080` and  web server running without installing nginx locally.
+
+Stop it:
+
+```bash
+docker stop my-nginx
+docker rm my-nginx
+```
+
+---
+
+## Writing a Dockerfile (Node Example)
+
+```dockerfile
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --omit=dev
+
+COPY . .
+
+EXPOSE 3000
+CMD ["node", "src/index.js"]
+```
+
+Build image:
+
+```bash
+docker build -t my-node-api .
+```
+
+Run container:
+
+```bash
+docker run -d -p 3000:3000 my-node-api
+```
+
+---
+
+## Docker Compose (Multiple Services)
+
+Real apps need database + cache. Compose lets you run everything together.
+
+```yaml
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+
+  db:
+    image: postgres:16-alpine
+
+  cache:
+    image: redis:7-alpine
+```
+
+Start:
+
+```bash
+docker compose up -d
+```
+
+Stop:
+
+```bash
+docker compose down
+```
+
+---
+
+## Commands I Actually Use Daily
+
+```bash
+docker ps
+docker logs -f <container>
+docker exec -it <container> sh
+docker images
+docker inspect <container>
+```
+
+Memorize these and you already look like a Docker pro.
+
+
+Docker is basically the entry ticket to modern DevOps. Once you get comfortable, deployments start feeling boring.

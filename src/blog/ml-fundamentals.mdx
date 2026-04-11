@@ -1,0 +1,290 @@
+export const meta = {
+title: "My Journey into Machine Learning Fundamentals",
+date: "2026-03-06",
+tags: ["Machine Learning", "MLOps", "Learning Journal"],
+author: "Sanket More",
+excerpt: "Introduction to ML and MLOps covering topics like machine learning basics, supervised learning, and how models learn from data.",
+readingTime: "15 min read"
+}
+
+Hello folks!
+
+This marks the beginning of my **Machine Learning journey (more precisely, MLOps)**.
+
+Coming from a background in **DevOps and cloud technologies**, I recently started exploring how machine learning systems are built and how they are **deployed, monitored, and maintained in production environments**.
+
+To keep track of my progress and reinforce my understanding, I decided to **document everything I learn about ML and MLOps on my portfolio blog**.
+
+This post is the **first part of that learning series**, where I’ll cover some foundational concepts of machine learning.
+
+In this article we’ll cover:
+
+* What machine learning actually is
+* How it differs from traditional programming
+* The main types of machine learning
+* How models learn from data
+* Concepts like feature matrices, labels, and tokenization
+
+Many more posts will follow as I continue exploring this field.
+
+Stay tuned 🚀
+
+---
+
+## What is Machine Learning?
+
+In today's fast paced tech world, almost everything is becoming **automated**.
+
+From recommendation systems on streaming platforms to spam detection in email services, intelligent systems are everywhere.
+
+But the real question is:
+
+**How does this automation actually happen?**
+
+One major answer is **Machine Learning (ML)**.
+
+Machine Learning is a branch of computer science that focuses on building systems capable of **learning patterns from data and making predictions without being explicitly programmed for every rule**.
+
+![Machine Learning](https://res.cloudinary.com/dh9bwsdjp/image/upload/v1773582987/Gemini_Generated_Image_mie8fkmie8fkmie8_jh8t3e.png)
+
+---
+
+## Traditional Programming vs Machine Learning
+
+### Traditional Programming
+
+In traditional programming, developers define rules that determine how a program behaves based on given inputs.
+
+```
+Input + Rules → Output
+```
+
+For example, if we want to detect spam emails using traditional programming, we might write rules like:
+
+* If the email contains certain words → mark as spam
+* If the sender is unknown → mark as spam
+
+The problem with this approach is **scalability**.
+
+As the number of cases increases, developers must continuously add new rules. Eventually the system becomes **complex, fragile, and difficult to maintain**.
+
+---
+
+### Machine Learning Approach
+
+Machine learning flips this idea.
+
+Instead of writing rules ourselves, we allow the **model to learn the rules from data**.
+
+```
+Input + Output → Model learns Rules
+```
+
+We provide the model with historical data and the correct answers. The model learns patterns from this data and uses those patterns to make predictions on new, unseen data.
+
+This ability to **learn from experience** is what makes machine learning powerful.
+
+---
+
+## Types of Machine Learning
+
+Machine learning algorithms are generally categorized into **three main types**.
+
+---
+
+### Supervised Learning
+
+Supervised learning is the **most commonly used type of machine learning**.
+
+In this approach, the model is trained using **labeled data**, meaning each input has a corresponding correct output.
+
+The training dataset contains:
+
+* **Feature matrix (X)** → input data
+* **Labels (y)** → correct outputs
+
+The model learns by comparing its **predicted output** with the **actual output** and adjusting internal parameters (weights) to reduce prediction error.
+
+Example:
+
+```
+Input  → Email text
+Output → Spam / Not Spam
+```
+
+Common supervised learning tasks include:
+
+* Email spam detection
+* House price prediction
+* Image classification
+* Sentiment analysis
+
+---
+
+### Unsupervised Learning
+
+In unsupervised learning, the dataset **does not contain labeled outputs**.
+
+The model only receives input data and must discover **hidden patterns or structures within the data**.
+
+Unlike supervised learning, there is **no correct answer provided during training**.
+
+A common use case is **clustering**, where algorithms group similar data points together.
+
+Example applications include:
+
+* Customer segmentation
+* Market basket analysis
+* Anomaly detection
+* Grouping similar documents
+
+Here the goal is not prediction but **pattern discovery**.
+
+---
+
+### Reinforcement Learning
+
+Reinforcement learning works differently from the previous two approaches.
+
+In this method, an **agent interacts with an environment and learns through trial and error**.
+
+Each action results in either:
+
+* a **reward**
+* or a **penalty**
+
+The agent's objective is to **maximize the total reward over time**.
+
+Applications include:
+
+* Game playing AI
+* Robotics
+* Autonomous driving
+* Recommendation systems
+
+A famous example is **AlphaGo**, which learned to play the board game Go better than human experts.
+
+---
+
+## How Models Learn
+
+The training process of a machine learning model follows a repeated workflow.
+
+```
+Input → Model → Prediction
+             ↓
+      Compare with actual output
+             ↓
+        Calculate loss
+             ↓
+      Update model weights
+```
+
+### Training Process
+
+
+![ML Training Process](https://res.cloudinary.com/dh9bwsdjp/image/upload/v1773582988/Gemini_Generated_Image_qphh3kqphh3kqphh_azoxah.png)
+
+
+1. The model receives input data from the feature matrix.
+2. The model generates a prediction.
+3. The prediction is compared with the actual output.
+4. The difference between predicted output and actual output is called **loss**.
+5. The model updates its weights to reduce the loss.
+
+This process repeats many times until the model becomes reasonably accurate.
+
+A common algorithm used for updating weights is **Gradient Descent**, which adjusts model parameters in the direction that minimizes loss.
+
+---
+
+## Feature Matrix and Labels
+
+In supervised learning, datasets are divided into two key components.
+
+### Feature Matrix (X)
+
+![Features](https://res.cloudinary.com/dh9bwsdjp/image/upload/v1773583321/Gemini_Generated_Image_t7fd5vt7fd5vt7fd_xhj9gj.png)
+
+The **feature matrix** contains the input data used to train the model.
+
+Each row represents one data sample and each column represents a feature.
+
+
+These features help the model learn patterns from the data.
+
+---
+
+### Labels (y)
+
+Labels represent the **correct outputs** corresponding to each row in the feature matrix.
+
+Example:
+
+```
+Spam
+Not Spam
+```
+
+During training, the model learns the mapping between:
+
+```
+Features (X) → Labels (y)
+```
+
+---
+
+## Tokenization and Search Systems
+
+Another concept I explored while learning about ML systems is **tokenization**, which is widely used in **Natural Language Processing (NLP)**.
+
+Tokenization is the process of **breaking text into smaller units called tokens**.
+
+Example:
+
+Query:
+
+```
+"What is this course about?"
+```
+
+After tokenization:
+
+```
+["what", "is", "this", "course", "about"]
+```
+
+Simplified search workflow:
+
+```
+Query
+ ↓
+Tokenize words
+ ↓
+Match tokens with documents
+ ↓
+Score documents
+ ↓
+Return top results
+```
+
+![Tokenization](https://res.cloudinary.com/dh9bwsdjp/image/upload/v1773583420/Gemini_Generated_Image_2ecr0u2ecr0u2ecr_w0x3s8.png)
+
+---
+
+
+## Conclusion
+
+This was my **first step toward understanding machine learning fundamentals**.
+
+While these concepts may seem simple, they form the **foundation of modern machine learning and MLOps systems**.
+
+Once these basics are clear, it becomes much easier to understand more advanced topics like:
+
+* model deployment
+* experiment tracking
+* monitoring ML systems in production
+
+I'm excited to continue learning and documenting the journey here.
+
+See you in the next post 👋

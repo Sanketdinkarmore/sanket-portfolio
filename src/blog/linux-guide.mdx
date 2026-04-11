@@ -1,0 +1,189 @@
+export const meta = {
+title: "Linux - Startup Guide",
+date: "2026-01-02",
+tags: ["linux", "shell", "scripts"],
+author: "Sanket More",
+excerpt: "Simple Linux starter guide for developers who want to actually use the terminal daily.",
+readingTime: "6 min read",
+color: "rose",
+}
+
+
+You are probably using Linux already like your servers, containers, cloud VMs, even Android. Once you understand the basics, working in DevOps or backend feels way easier.
+
+This is not theory heavy. Just the stuff you actually use daily.
+
+---
+
+## What Linux Really Is
+
+Linux is a **kernel**, not a full OS. Distros like Ubuntu, Debian, or Arch just bundle tools around it.
+
+When you SSH into a server, you’re basically talking to the kernel through a shell. No fancy UI, just commands doing real work.
+
+---
+
+## Filesystem Basics
+
+Everything in Linux is treated like a file (logs, devices, processes, configs).
+
+```
+/
+├── bin
+├── etc
+├── home
+├── var
+├── usr
+├── proc
+├── dev
+```
+
+Unlike Windows drives, Linux has one single tree. External disks just mount somewhere inside it.
+
+---
+
+![Linux Terminal Workflow](https://res.cloudinary.com/dh9bwsdjp/image/upload/v1772005002/linux_pulfrz.webp)
+
+---
+
+## Terminal Commands I Actually Use
+
+### Navigation
+
+```bash
+pwd
+ls -lah
+cd /etc
+cd ~
+cd -
+```
+
+### File Operations
+
+```bash
+touch file.txt
+mkdir -p projects/linux
+cp -r src/ backup/
+mv old.txt new.txt
+rm -rf dist/
+```
+
+### Viewing Logs
+
+```bash
+cat file.log
+head -20 file.log
+tail -f file.log
+```
+
+---
+
+## Permissions (Quick Understanding)
+
+```bash
+-rwxr-xr-- file.sh
+```
+
+* Owner → rwx
+* Group → r-x
+* Others → r--
+
+Commands you’ll use a lot:
+
+```bash
+chmod +x deploy.sh
+chmod 644 config.yml
+chown user:group folder/
+```
+
+---
+
+## Processes & Monitoring
+
+```bash
+ps aux
+top
+pgrep nginx
+kill 1234
+pkill nginx
+```
+
+If something breaks in production, these commands become your best friends.
+
+---
+
+## Package Management (Install Stuff Fast)
+
+```bash
+sudo apt update
+sudo apt install nginx
+```
+
+Different distros = different managers, but concept stays same.
+
+---
+
+## systemd Services
+
+```bash
+sudo systemctl start nginx
+sudo systemctl restart nginx
+sudo systemctl status nginx
+journalctl -u nginx -f
+```
+
+Basically how servers stay alive after reboot.
+
+---
+
+## Pipes = Linux Superpower
+
+```bash
+grep "ERROR" app.log | wc -l
+awk '{print $1}' access.log | sort | uniq -c | sort -rn | head
+```
+
+Small commands + pipes = insane power.
+
+---
+
+## SSH (Daily DevOps Tool)
+
+```bash
+ssh user@server
+ssh -i key.pem user@ip
+ssh -L 3000:localhost:3000 user@ip
+```
+
+Once key auth is setup, password login feels ancient.
+
+---
+
+## Simple Bash Script Example
+
+```bash
+#!/bin/bash
+set -e
+
+echo "Starting deploy..."
+git pull origin main
+npm ci --omit=dev
+npm run build
+sudo systemctl restart myapp
+```
+
+Automation is where Linux really starts paying off.
+
+---
+
+## Tools Worth Knowing
+
+* grep → search logs
+* sed → replace text
+* awk → process columns
+* curl → test APIs
+* jq → parse JSON
+
+---
+
+Linux is basically the backbone of modern infra. The more comfortable you get with the terminal, the less you depend on GUIs — and honestly, things start breaking less too.

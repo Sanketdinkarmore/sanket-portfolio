@@ -1,0 +1,277 @@
+export const meta = {
+title: "How Machine Learning Projects Actually Work",
+date: "2026-03-15",
+tags: ["Machine Learning", "MLOps", "CRISP-DM"],
+author: "Sanket More",
+excerpt: "Understanding CRISP-DM and why datasets are split into train, validation, and test sets.",
+readingTime: "15 min read"
+}
+
+In the previous blog, I talked about the **basics of machine learning** such as what ML is, the different types of ML, and how models learn from data.
+
+But building a machine learning model in the real world is not just about training an algorithm. ML projects usually follow a **structured workflow** so that the model we build actually solves a real problem.
+
+One commonly used framework for this is called **CRISP-DM**.
+
+In this blog, I will explain:
+
+* what CRISP-DM is
+* the different phases of a machine learning project
+* why datasets are split into training, validation, and test sets
+
+---
+
+## What is CRISP-DM?
+
+![CRISP-DM](https://res.cloudinary.com/dh9bwsdjp/image/upload/v1773583678/Gemini_Generated_Image_tf6rm4tf6rm4tf6r_wy2lrb.png)
+
+CRISP-DM stands for:
+
+**Cross Industry Standard Process for Data Mining**
+
+It is a framework that describes the **typical lifecycle of a machine learning project**. Instead of randomly jumping into model training, CRISP-DM provides a structured approach to solving data science problems.
+
+The idea is simple: before building a model, we first understand the problem, explore the data, prepare it properly, build models, evaluate them, and finally deploy them.
+
+This structured process helps teams build **reliable and practical machine learning systems**.
+
+---
+
+## The Six Phases of CRISP-DM
+
+CRISP-DM divides the machine learning lifecycle into **six phases**.
+
+---
+
+### 1. Business Understanding
+
+This is the first and one of the most important steps.
+
+In this phase, the goal is to clearly understand **what problem we are trying to solve**. Instead of directly thinking about algorithms, we first define the business objective.
+
+Example:
+
+Predict customer churn.
+
+Here the goal is to identify customers who might stop using a service so that the company can take action to retain them.
+
+Understanding the business problem helps us define the **right machine learning task**.
+
+---
+
+### 2. Data Understanding
+
+Once the problem is defined, the next step is to explore the available data.
+
+In this phase, we try to understand:
+
+* what data is available
+* how the dataset is structured
+* whether there are missing values
+* whether the data contains useful patterns
+
+Typical tasks include:
+
+* checking dataset structure
+* identifying missing values
+* exploring patterns
+
+This step is important because **the quality of the model depends heavily on the quality of the data**.
+
+---
+
+### 3. Data Preparation
+
+Data preparation is usually the **most time consuming part of a machine learning project**.
+
+Raw data is rarely perfect, so it needs to be cleaned and transformed before it can be used for training models.
+
+Typical tasks include:
+
+* handling missing values
+* removing duplicates
+* feature engineering
+* transforming data for model training
+
+Feature engineering is especially important because it involves creating meaningful input features that help the model learn better patterns.
+
+---
+
+### 4. Modeling
+
+Once the data is ready, we can start building machine learning models.
+
+In this phase, different algorithms are trained using the prepared dataset.
+
+Possible models include:
+
+* Linear Regression
+* Decision Trees
+* Random Forest
+* Neural Networks
+
+The goal here is to train models and see which one performs best for the given problem.
+
+---
+
+### 5. Evaluation
+
+After training models, we need to check how well they perform.
+
+In the evaluation phase, we measure the model’s performance using different metrics such as:
+
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+
+We also verify whether the model actually solves the **original business problem**.
+
+Sometimes a model may have good accuracy but still not be useful for the real world task.
+
+---
+
+### 6. Deployment
+
+Once the model performs well, the final step is deployment.
+
+In this phase, the trained model is integrated into a real application where it can make predictions on new data.
+
+Example system workflow:
+
+```id="t1x9mz"
+User Request → Model API → Prediction
+```
+
+After deployment, the model can be used by applications, services, or users to generate predictions automatically.
+
+---
+
+## Dataset Splitting
+
+![Dataset Splitting](https://res.cloudinary.com/dh9bwsdjp/image/upload/v1773583935/Gemini_Generated_Image_8bx6rr8bx6rr8bx6_vw239q.png)
+
+When training machine learning models, we usually split the dataset into three parts.
+
+Typical split:
+
+```id="j3pgfx"
+Training   → 60%
+Validation → 20%
+Testing    → 20%
+```
+
+This split helps us properly train and evaluate the model without introducing bias.
+
+Each dataset serves a different purpose.
+
+---
+
+## Training Phase
+
+Dataset used:
+
+````
+X_train
+y_train
+``` id="x7y82s"
+
+The training dataset is used to **teach the model**.
+
+During training, the model:
+
+- takes the input features  
+- makes predictions  
+- compares predictions with the correct output  
+- adjusts its weights to reduce the error  
+
+Key activities include:
+
+- training the model  
+- updating weights  
+- minimizing loss  
+
+This process is repeated many times until the model learns useful patterns.
+
+---
+
+# Validation Phase
+
+Dataset used:
+
+````
+
+X_val
+y_val
+
+```id="4b8y5m"
+
+The validation dataset is used to **compare different models or configurations**.
+
+For example, we may train multiple models and check which one performs better.
+
+Example comparison:
+
+| Model | Validation Accuracy |
+|------|------|
+| Logistic Regression | 82% |
+| Random Forest | 89% |
+| Neural Network | 92% |
+
+In this case, the neural network performs the best, so we may choose it as the final model.
+
+The important point is that **validation data is not used for training**.
+
+---
+
+# Test Phase
+
+Dataset used:
+
+```
+
+X_test
+y_test
+
+````id="o0u2kz"
+
+The test dataset is used for **final evaluation**.
+
+It helps us estimate how well the model will perform on completely new data.
+
+Important rule:
+
+The test dataset should remain **unseen during training and model selection**.
+
+This ensures that the evaluation is fair and unbiased.
+
+---
+
+# Why Data Splitting Matters
+
+If we train and evaluate the model on the same dataset, the model might simply **memorize the data instead of learning real patterns**.
+
+This problem is known as **overfitting**.
+
+Example:
+
+``` id="ymsn6g"
+Training Accuracy = 99%
+Test Accuracy     = 55%
+````
+
+This means the model performs very well on the training data but poorly on new data.
+
+By splitting the dataset into training, validation, and testing sets, we can detect and avoid overfitting.
+
+---
+
+## Conclusion
+
+Understanding CRISP-DM helped me realize that building a machine learning model is not just about training algorithms.
+
+A successful ML project requires a structured approach that includes understanding the problem, preparing data properly, evaluating models carefully, and deploying them effectively.
+
+This framework provides a clear roadmap for building machine learning systems that are actually useful in real-world applications.
+
+More learning coming soon !!
