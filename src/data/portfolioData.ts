@@ -14,7 +14,7 @@ export const personalInfo: PersonalInfo = {
   email: 'moresanket2305@gmail.com',
   location: 'Mumbai, Maharashtra, India',
   avatar: '/sanket-avatar.png',
-  cvUrl:'https://drive.google.com/file/d/1SHUNshfAq7L2ZJyWITBjvbYYN9qC5mWd/view?usp=sharing',
+  cvUrl:'https://drive.google.com/file/d/1-qSUl-Np1KVB9OvWy_vaoZdRLRdt2fwh/view',
   status: 'Seeking full stack developer roles',
   bio: 'Full stack developer with production experience in Node.js, React, and AWS. I build dashboards, APIs, and data pipelines that ship.',
   socialLinks: [
@@ -44,7 +44,7 @@ export const projectsInfo: Project[] = [
       title: 'SMS Spam Detection (ML)',
       techStack: ['Python', 'Scikit-learn', 'Pandas', 'TF-IDF', 'Streamlit', 'AWS EC2'],
       image:'https://res.cloudinary.com/drsitovda/image/upload/q_auto/f_auto/v1775929182/Screenshot_2026-04-11_230856_epyeoc.png',
-      link: 'http://3.239.118.145:8501/',
+      link: 'http://100.26.176.27/',
       buttonTitle: 'Live',
     },
   

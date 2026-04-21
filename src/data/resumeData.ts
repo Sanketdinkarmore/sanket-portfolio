@@ -37,30 +37,73 @@ export const resumeData = {
     },
   ],
   skills: [
-    {
-      name: 'Languages',
-      stack: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'C++', 'Java', 'SQL'],
-    },
-    {
-      name: 'Frontend',
-      stack: ['React', 'React Native (Expo)', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS'],
-    },
-    {
-      name: 'Backend',
-      stack: ['Node.js', 'Express.js', 'Python', 'REST API design'],
-    },
-    {
-      name: 'Databases',
-      stack: ['MongoDB', 'MySQL', 'PostgreSQL'],
-    },
-    {
-      name: 'Cloud / DevOps',
-      stack: ['AWS (EC2, S3, IAM)', 'Docker', 'CI/CD', 'Git'],
-    },
-    {
-      name: 'AI / ML',
-      stack: ['Scikit-learn', 'Pandas', 'Streamlit', 'TF-IDF', 'feature engineering'],
-    },
+     {
+    name: 'Languages',
+    stack: [
+      'JavaScript (ES6+)',
+      'TypeScript',
+      'Python',
+      'C++',
+      'Java',
+      'SQL',
+      'Bash'
+    ],
+  },
+  {
+    name: 'Frontend',
+    stack: [
+      'React',
+      'React Native (Expo)',
+      'Next.js',
+      'Tailwind CSS',
+      'HTML',
+      'CSS'
+    ],
+  },
+  {
+    name: 'Backend',
+    stack: [
+      'Node.js',
+      'Express.js',
+      'Python',
+      'REST API Design',
+      'JWT Authentication',
+      'Microservices Architecture'
+    ],
+  },
+  {
+    name: 'Databases',
+    stack: [
+      'MongoDB',
+      'MySQL',
+      'PostgreSQL'
+    ],
+  },
+  {
+    name: 'Cloud / DevOps',
+    stack: [
+      'AWS (EC2, S3, VPC, Lambda, CloudWatch, RDS, IAM)',
+      'Docker',
+      'Kubernetes',
+      'Terraform',
+      'Jenkins',
+      'CI/CD Pipelines',
+      'Nginx',
+      'Apache',
+      'Git',
+      'Linux'
+    ],
+  },
+  {
+    name: 'AI / ML',
+    stack: [
+      'Scikit-learn',
+      'Pandas',
+      'Streamlit',
+      'TF-IDF Vectorization',
+      'Feature Engineering'
+    ],
+  },
   ],
   achievements: [
     'Hack It Out 2024: Top 4 finalist (20+ teams) — Student Management System',
