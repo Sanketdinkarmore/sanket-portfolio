@@ -4,7 +4,7 @@ import type { PersonalInfo, Project, SkillsInfo } from '../types/index';
 export const skillsData: SkillsInfo = {
   frontend: ['React', 'Next.js', 'Tailwind CSS', 'React Native (Expo)', 'HTML', 'CSS'],
   backend: ['Node.js', 'Express.js', 'Python', 'REST APIs', 'MongoDB', 'MySQL', 'PostgreSQL'],
-  devops: ['Docker', 'CI/CD', 'Git', 'GitHub', 'Postman'],
+  devops: ['Docker', 'CI/CD','Kubernetes(K8s)', 'Git', 'GitHub', 'Postman'],
   cloud: ['AWS (EC2, S3, IAM)', 'Netlify'],
 };
 
