@@ -14,7 +14,7 @@ export const personalInfo: PersonalInfo = {
   email: 'moresanket2305@gmail.com',
   location: 'Mumbai, Maharashtra, India',
   avatar: '/sanket-avatar.png',
-  cvUrl:'https://drive.google.com/file/d/1-qSUl-Np1KVB9OvWy_vaoZdRLRdt2fwh/view',
+  cvUrl:'https://drive.google.com/file/d/1TZZcoz9kdyvt4niti5iPZ16ELgXAzbM7/view?usp=drivesdk',
   status: 'Seeking full stack developer roles',
   bio: 'Full stack developer with production experience in Node.js, React, and AWS. I build dashboards, APIs, and data pipelines that ship.',
   socialLinks: [
