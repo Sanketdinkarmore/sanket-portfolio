@@ -14,7 +14,7 @@ export const personalInfo: PersonalInfo = {
   email: 'moresanket2305@gmail.com',
   location: 'Mumbai, Maharashtra, India',
   avatar: '/sanket-avatar.png',
-  cvUrl:'https://drive.google.com/file/d/1-qSUl-Np1KVB9OvWy_vaoZdRLRdt2fwh/view',
+  cvUrl:'https://drive.google.com/file/d/1HEPmYS-KY5S3GnvfKyj0VO2dIB09bDWo/view?usp=drive_link',
   status: 'Seeking full stack developer roles',
   bio: 'Full stack developer with production experience in Node.js, React, and AWS. I build dashboards, APIs, and data pipelines that ship.',
   socialLinks: [
@@ -34,7 +34,7 @@ export const projectsInfo: Project[] = [
       title: 'NASA APOD Dashboard',
       techStack: ['React', 'Tailwind CSS', 'JavaScript', 'REST API', 'Netlify'],
       image: 'https://res.cloudinary.com/drsitovda/image/upload/q_auto/f_auto/v1775928827/Screenshot_2026-04-11_230319_tiwen4.png',
-      link: 'https://stellar-apod-vision.netlify.app/',
+      link: 'http://52.64.31.250/nasa-apod/',
       buttonTitle: 'Live',
     },
   
@@ -44,7 +44,7 @@ export const projectsInfo: Project[] = [
       title: 'SMS Spam Detection (ML)',
       techStack: ['Python', 'Scikit-learn', 'Pandas', 'TF-IDF', 'Streamlit', 'AWS EC2'],
       image:'https://res.cloudinary.com/drsitovda/image/upload/q_auto/f_auto/v1775929182/Screenshot_2026-04-11_230856_epyeoc.png',
-      link: 'http://100.26.176.27/',
+      link: 'http://3.26.99.227/',
       buttonTitle: 'Live',
     },
   
