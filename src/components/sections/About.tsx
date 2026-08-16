@@ -8,26 +8,30 @@ const About: React.FC = () => {
   const services = [
     {
       icon: SoftwareDevIcon,
-      title: 'Software Development',
-      description: 'I love crafting clean, efficient code that solves real problems — from architecting backends to shipping polished UIs.',
+      title: 'Full-Stack Products',
+      description:
+        'I build end-to-end web apps with React/Next.js, Node.js, and typed backends — from auth and APIs to dashboards that ship to real users.',
       color: 'text-blue-500',
     },
     {
       icon: CloudArchIcon,
-      title: 'Cloud Architecture',
-      description: 'I enjoy designing cloud systems that are resilient and cost-smart — whether it\'s AWS, GCP, or Azure, I love making infrastructure elegant.',
+      title: 'Cloud & DevOps',
+      description:
+        'I deploy and operate on AWS with Docker, Nginx, and CI/CD — focusing on reliable releases, monitoring, and faster deployment cycles.',
       color: 'text-cyan-500',
     },
     {
       icon: DevSecOpsIcon,
-      title: 'DevSecOps',
-      description: 'I\'m passionate about baking security into every pipeline stage — because I believe safe systems and fast delivery should never be a tradeoff.',
+      title: 'APIs & Data',
+      description:
+        'I design REST APIs, JWT/OAuth auth, and data pipelines with PostgreSQL, MongoDB, Redis, and async workers for production workloads.',
       color: 'text-red-500',
     },
     {
       icon: SREIcon,
-      title: 'SRE',
-      description: 'I enjoy obsessing over reliability and reducing toil — building systems that are observable, self-healing, and a joy to operate.',
+      title: 'AI-Powered Features',
+      description:
+        'I ship practical AI product features — resume intelligence, brand matching, ML classifiers — grounded in real workflows, not demos.',
       color: 'text-green-500',
     },
   ];

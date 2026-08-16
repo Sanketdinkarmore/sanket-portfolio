@@ -158,7 +158,8 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = () => {
               </p>
               <a
                 href={cvUrl}
-                download
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-white hover:text-blue-400 text-[0.85rem] transition"
               >
                 <span>Download</span>

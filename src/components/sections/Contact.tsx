@@ -33,7 +33,9 @@ const Contact = () => {
 
       <p className="text-gray-400 mb-8">
         Open for opportunities:{" "}
-        <span className="text-white font-semibold">Yes</span>
+        <span className="text-white font-semibold">
+          Full Stack · Software Engineer · DevOps · Cloud
+        </span>
       </p>
 
       <h3 className="text-[26px] font-bold mb-6">Contact Form</h3>
