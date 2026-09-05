@@ -14,7 +14,7 @@ export const personalInfo: PersonalInfo = {
   location: 'Mumbai · Pune · Remote',
   avatar: '/sanket-avatar.png',
   cvUrl:
-    'https://drive.google.com/uc?export=download&id=168BKuVazLXNpFiCMAycb9WZ5aXIXexp3',
+    'https://drive.google.com/file/d/1IZI-NKBpcxgngYoTn6_AvkTQS0o5Jz_W/view?usp=sharing',
   status: 'Open to Full Stack · SWE · DevOps · Cloud',
   bio: 'Full-stack engineer building scalable products with cloud, AI, and modern web technologies. Experienced in Node.js, React/Next.js, Python, PostgreSQL, AWS, and Docker.',
   socialLinks: [
@@ -31,12 +31,35 @@ export const personalInfo: PersonalInfo = {
   ],
 };
 
-const ph = (text: string) =>
-  `https://placehold.co/800x500/23262b/22D3EE?text=${encodeURIComponent(text)}`;
+/** Optimized Cloudinary delivery URL helper */
+const cld = (publicId: string) =>
+  `https://res.cloudinary.com/drsitovda/image/upload/q_auto,f_auto/${publicId}`;
 
 export const projectsInfo: Project[] = [
   {
     id: 1,
+    category: 'Project',
+    title: 'SecureAI — Code Security Platform',
+    techStack: [
+      'Next.js',
+      'Node.js',
+      'Express',
+      'Prisma',
+      'PostgreSQL',
+      'FastAPI',
+      'Redis',
+      'BullMQ',
+      'Docker',
+      'AWS',
+    ],
+    image:
+      'https://res.cloudinary.com/drsitovda/image/upload/q_auto,f_auto/v1788612124/Screenshot_2026-09-05_181142_i9yofe.png',
+    link: 'https://secureai-sanket.duckdns.org/',
+    githubUrl: 'https://github.com/Sanketdinkarmore/secure_AI',
+    buttonTitle: 'Live',
+  },
+  {
+    id: 2,
     category: 'Project',
     title: 'Nextup — Career OS',
     techStack: [
@@ -50,13 +73,14 @@ export const projectsInfo: Project[] = [
       'BullMQ',
       'AWS',
     ],
-    image: '/projects/nextup.png',
+    image:
+      'https://res.cloudinary.com/drsitovda/image/upload/q_auto,f_auto/v1788611334/nextup_ptguih.jpg',
     link: 'https://nextup-sanket.duckdns.org/',
     githubUrl: 'https://github.com/Sanketdinkarmore/resumeanalysis',
     buttonTitle: 'Live',
   },
   {
-    id: 2,
+    id: 3,
     category: 'Project',
     title: 'BrandBridge AI',
     techStack: [
@@ -66,13 +90,14 @@ export const projectsInfo: Project[] = [
       'Gemini',
       'Tailwind CSS',
     ],
-    image: '/projects/brandbridge.png',
+    image:
+      'https://res.cloudinary.com/drsitovda/image/upload/q_auto,f_auto/v1788611334/brandbridge_yzmbms.jpg',
     link: 'https://brandbridgeai.vercel.app/',
     githubUrl: 'https://github.com/Sanketdinkarmore/brandbridgeai',
     buttonTitle: 'Live',
   },
   {
-    id: 3,
+    id: 4,
     category: 'Project',
     title: 'CaptionCraft',
     techStack: [
@@ -83,23 +108,25 @@ export const projectsInfo: Project[] = [
       'ASR',
       'AI',
     ],
-    image: '/projects/captioncraft.png',
+    image: cld(
+      'v1771524108/captioncraft/user_696f80af269ab5ec6c7b9028/thumbnails/ocikucnlodullc7ampaf'
+    ),
     githubUrl: 'https://github.com/Sanketdinkarmore/CaptionCraft',
     buttonTitle: 'Github',
   },
   {
-    id: 4,
+    id: 5,
     category: 'Project',
     title: 'NASA APOD Dashboard',
     techStack: ['React', 'Tailwind CSS', 'JavaScript', 'NASA API'],
-    image: '/projects/nasa-apod.png',
+    image: cld('v1775928827/Screenshot_2026-04-11_230319_tiwen4'),
     link: 'http://52.64.31.250/nasa-apod/',
     githubUrl:
       'https://github.com/Sanketdinkarmore/Nasa-apod-react-dashboard',
     buttonTitle: 'Live',
   },
   {
-    id: 5,
+    id: 6,
     category: 'Project',
     title: 'SMS Spam Detection (ML)',
     techStack: [
@@ -110,26 +137,9 @@ export const projectsInfo: Project[] = [
       'Streamlit',
       'AWS EC2',
     ],
-    image: '/projects/sms-spam.png',
-    link: 'http://3.26.99.227/',
+    image: cld('v1775929182/Screenshot_2026-04-11_230856_epyeoc'),
+    link: 'https://sms-spam-classifier-ml-ekfwxqgxqvtdve6uv5ypwd.streamlit.app/',
     githubUrl: 'https://github.com/Sanketdinkarmore/sms-spam-classifier-ML',
     buttonTitle: 'Live',
-  },
-  {
-    id: 6,
-    category: 'Project',
-    title: 'Student Management System',
-    techStack: [
-      'Node.js',
-      'Express.js',
-      'MongoDB',
-      'JWT',
-      'React',
-      'REST APIs',
-    ],
-    image: ph('Student Mgmt · Hack It Out Top 4'),
-    githubUrl:
-      'https://github.com/Sanketdinkarmore/Student-Management-System',
-    buttonTitle: 'Github',
   },
 ];
